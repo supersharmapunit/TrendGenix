@@ -25,16 +25,16 @@ function SearchBox() {
 
 
   return (
-    <div className="flex w-full space-x-2 justify-center items-center">
+    <div className="flex mb-1 w-1/2 mx-auto border-2 rounded-xl border-grey bg-black mx-7 space-x-2 justify-center items-center">
       <Textarea
         onChange={(e) => setSearchText(e.target.value)}
-        className=" rounded-xl w-2/4 p-3 border-2 border-grey bg-black resize-none"
+        className="ml-1 border-none resize-none"
         placeholder="What have you learnt today..."
         value={searchText}
         onKeyDown={(event) => handleEnterKeyDown(event)}
       ></Textarea>
       <Button onClick={handleSubmit} variant="ghost" size="icon">
-        <ArrowUpCircle className="h-auto w-10" />
+        <ArrowUpCircle className="h-auto w-10 mr-1" />
       </Button>
     </div>
   );
