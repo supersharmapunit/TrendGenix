@@ -1,12 +1,14 @@
 import { openai } from "../config/openaiConfig";
+import { chatPromptText } from "../utilities/chatPrompt";
 
 
-export async function chatAI() {
+export async function chatAI(promptChoice :string, userInput :string) {
     const completion = await openai.chat.completions.create({
         messages: [{
             role: 'system',
-            content: 'Is my model working, How are you doing?,'
-        },{
+            content: chatPromptText(promptChoice, userInput)
+        },
+        {
             role : 'system',
             content: 'Message must be a valid json object'
         } 
@@ -16,5 +18,5 @@ export async function chatAI() {
             type: 'json_object'
         }
     });
-    return completion.choices;
+    return JSON.parse(completion.choices[0].message.content);
 } 
